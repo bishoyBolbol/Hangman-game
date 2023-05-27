@@ -1,0 +1,289 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: Tahoma, Arial;
+}
+.container{
+    margin: 20px auto;
+    width: 1000px;
+}
+.row{
+    display: flex;
+}
+hr{
+    border: 1px solid #eee;
+}
+.game-info{
+    display: flex;
+}
+.game-info .game-name{
+    flex: 1;
+}
+.game-info .category{
+    flex: 1;
+    text-align: right;
+}
+.game-info .category span{
+    text-transform: capitalize;
+    color: #e91e63;
+    font-weight: bold;
+}
+.hangman-draw{
+    flex: 1;
+    background-color: #f8f8f8;
+    padding: 20px;
+    height: 324px;
+}
+.hangman-draw .the-draw{
+    width: 60px;
+    height: 280px;
+    border-bottom: 4px solid #222;
+    position: relative;
+    margin: auto;
+    left: -60px;
+    display: none;
+}
+.hangman-draw .the-stand::before{
+    content: '';
+    height: 100%;
+    width: 4px;
+    position: absolute;
+    background-color: #222;
+    left: calc(50% - 2px);
+    display: none;
+}
+.hangman-draw .the-hang::before{
+    content: '';
+    height: 4px;
+    width: 100px;
+    background-color: #222;
+    position: absolute;
+    left: 50%;
+    top: 15px;
+    display: none;
+}
+.hangman-draw .the-hang::after{
+    content: '';
+    height: 30px;
+    width: 4px;
+    background-color: #222;
+    position: absolute;
+    left: 210%;
+    top: 15px;
+    display: none;
+}
+.hangman-draw .the-rope{
+    width: 70px;
+    height: 70px;
+    border: 4px dashed #222;
+    position: absolute;
+    left: calc(210% - 35px);
+    top: 45px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: none;
+}
+.hangman-draw .the-man .head{
+    width: 50px;
+    height: 50px;
+    border: 4px solid #222;
+    position: absolute;
+    left: calc(210% - 25px);
+    top: 55px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%; 
+    display: none;
+}
+.hangman-draw .the-man .body{
+    position: absolute;
+    width: 4px;
+    height: 120px;
+    background-color: #222;
+    top: 105px;
+    left: 210%;
+    display: none;
+}
+.hangman-draw .the-man .hands::before{
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 4px;
+    background-color: #222;
+    left: 153%;
+    top: 140px;
+    display: none;
+    transform: rotateZ(130deg);
+    -webkit-transform: rotateZ(130deg);
+    -moz-transform: rotateZ(130deg);
+    -ms-transform: rotateZ(130deg);
+    -o-transform: rotateZ(130deg);
+    
+}
+.hangman-draw .the-man .hands::after{
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 4px;
+    background-color: #222;
+    left: 199%;
+    top: 140px;
+    display: none;
+    transform: rotateZ(-130deg);
+    -webkit-transform: rotateZ(-130deg);
+    -moz-transform: rotateZ(-130deg);
+    -ms-transform: rotateZ(-130deg);
+    -o-transform: rotateZ(-130deg);
+}
+.hangman-draw .the-man .legs::before{
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 4px;
+    background-color: #222;
+    left: 153%;
+    top: 200px;
+    display: none;
+    transform: rotateZ(130deg);
+    -webkit-transform: rotateZ(130deg);
+    -moz-transform: rotateZ(130deg);
+    -ms-transform: rotateZ(130deg);
+    -o-transform: rotateZ(130deg);
+}
+.hangman-draw .the-man .legs::after{
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 4px;
+    background-color: #222;
+    left: 199%;
+    top: 200px;
+    display: none;
+    transform: rotateZ(-130deg);
+    -webkit-transform: rotateZ(-130deg);
+    -moz-transform: rotateZ(-130deg);
+    -ms-transform: rotateZ(-130deg);
+    -o-transform: rotateZ(-130deg);
+}
+.hangman-draw.wrong-1 .the-draw{
+    display: block;
+}
+.hangman-draw.wrong-2 .the-stand::before{
+    display: block;
+}
+.hangman-draw.wrong-3 .the-hang::after{
+    display: block;
+}
+.hangman-draw.wrong-3 .the-hang::before{
+    display: block;
+}
+.hangman-draw.wrong-4 .the-rope{
+    display: block;
+}
+.hangman-draw.wrong-5 .head{
+    display: block;
+}
+.hangman-draw.wrong-6 .body{
+    display: block;
+}
+.hangman-draw.wrong-7 .hands::before{
+    display: block;
+}
+.hangman-draw.wrong-7 .hands::after{
+    display: block;
+}
+.hangman-draw.wrong-8 .legs::after{
+    display: block;
+}
+.hangman-draw.wrong-8 .legs::before{
+    display: block;
+}
+.letters{
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+}
+.letters.finished{
+    pointer-events: none;
+}
+.letters .letter-box{
+    width: 55px;
+    height: 55px;
+    display: inline-block;
+    background-color: #009688;
+    color: white;
+    font-size: 24px;
+    margin-right: 10px;
+    line-height: 55px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.letters .letter-box.clicked{
+    background-color: #222;
+    opacity: .2;
+    pointer-events: none;
+}
+.letters-guess{
+    margin: 10px auto;
+    background-color: #f8f8f8;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 104px;
+}
+.letters-guess span{
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 60px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #fdfdfd;
+    border-bottom: 3px solid #222;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+}
+.letters-guess span.has-space{
+    background: none;
+    border-bottom: none;
+    position: relative;
+}
+.letters-guess span.has-space::before{
+   content: '';
+   width: 20px;
+   height: 4px;
+   background-color: #222;
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50% , -50%);
+   -webkit-transform: translate(-50% , -50%);
+   -moz-transform: translate(-50% , -50%);
+   -ms-transform: translate(-50% , -50%);
+   -o-transform: translate(-50% , -50%);
+}
+.popup{
+    position: fixed;
+    background-color: #009688;
+    padding: 100px 20px;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    text-align: center;
+    font-size: 40px;
+    border: 1px solid #ccc;
+    color: #fff;
+}
